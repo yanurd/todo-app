@@ -1,8 +1,6 @@
 :root {
   --Bright-Blue: hsl(220, 98%, 61%);
-  --Check-Background: linear-gradient(
-    hsl(192, 100%, 67%) to hsl(280, 87%, 65%)
-  );
+  --Check-Background: url(../img/icon-check.svg) center no-repeat, linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
   /* Light Theme */
   --Very-Light-Gray: hsl(0, 0%, 98%);
@@ -32,6 +30,7 @@ html {
 }
 
 body {
+  min-height: 100vh;
   background: var(--Very-Light-Grayish-Blue);
   font-family: "Josefin Sans", Helvetica, sans-serif;
 }
@@ -125,21 +124,49 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 2rem 1.5rem 5rem;
+  padding: .5rem 2rem .5rem 2rem;
   width: 100%;
 }
 .content-list ul li:not(:first-child){
   border-top: 1px solid var(--Very-Light-Grayish-Blue);
 }
 .content-list ul li:last-child {
-  justify-content: space-between;
+  padding: 2rem
 }
 
-.content-list_todo h2{
+.content-list_delete img {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.content-list_todo input{
+  display: none;
+}
+.content-list_todo span{
   font-size: 1.4rem;
-  color:var(--Dark-Grayish-Blue)
+  color:var(--Dark-Grayish-Blue);
+  display: flex;
+  align-items:center;
+  padding: 1rem;
 }
-
+.content-list_todo label {
+  cursor: pointer;
+}
+.content-list_todo.completed span::before{
+  border: none;
+  width: 26px;
+  height:26px;
+  background: var(--Check-Background);
+}
+.content-list_todo span::before{
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--Dark-Grayish-Blue);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+}
 .content-list_left h2, .content-list_clear >h2> a{
   color: var(--Dark-Grayish-Blue);
   font-weight: 700;
@@ -154,8 +181,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 45px;
+  height: calc(100% + 30px);
 }
 
 .content-options a {
