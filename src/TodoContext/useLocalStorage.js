@@ -19,13 +19,12 @@ const useLocalStorage = (itemName, initialValue) => {
           parsedTodos = JSON.parse(localStorageTodos);
         }
         setItem(parsedTodos);
-        console.log("pasé")
         setLoading(false);
       } catch (error) {
         setError(true);
       }
     }, 1500);
-  }, []);
+  }, [initialValue]);
 
   const updateLocalStorage = (newTodo) => {
     try {
