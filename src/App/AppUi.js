@@ -4,23 +4,27 @@ import { TodoList } from "../TodoList";
 import { TodoItems } from "../TodoItems";
 import { Footer } from "../Footer";
 import { FilterTodo } from "../FilterTodo";
-import {TodoCounter} from '../TodoCounter'
+import { TodoCounter } from "../TodoCounter";
 import { TodoContext } from "../TodoContext";
-
+import { Modal } from "../Modal";
 import { useContext } from "react";
+import { CreateTodoButton } from "../CreateTodoButton";
+import { TodoForm } from "../TodoForm";
 const AppUi = () => {
   const {
     searchedTodos,
     uncompletedTodos,
     completeTodo,
-    deleteTodo
+    deleteTodo,
+    setOpenModal,
+    openModal,
   } = useContext(TodoContext);
   return (
     <>
       <Header />
       <main className="content">
         <SearchTodo />
-        <TodoList >
+        <TodoList>
           {searchedTodos.map((todo) => (
             <TodoItems
               key={todo.text}
@@ -29,11 +33,18 @@ const AppUi = () => {
               todo={todo}
             />
           ))}
-          <TodoCounter uncompletedTodos={uncompletedTodos}/>
+          <TodoCounter uncompletedTodos={uncompletedTodos} />
         </TodoList>
-        <FilterTodo/>
+        <FilterTodo />
       </main>
       <Footer />
+      {!!openModal && (
+        <Modal>
+          <TodoForm/>
+        </Modal>
+      )}
+
+      <CreateTodoButton setOpenModal={setOpenModal} />
     </>
   );
 };
