@@ -4,7 +4,7 @@ import "./TodoForm.css";
 
 function TodoForm() {
   const [newTodoValue, setNewTodoValue] = useState("");
-  const { addTodo, setOpenModal } = useContext(TodoContext);
+  const { saveTodo, setOpenModal } = useContext(TodoContext);
 
   const onChange = (event) => {
     setNewTodoValue(event.target.value);
@@ -14,7 +14,7 @@ function TodoForm() {
   };
   const onSubmit = (event) => {
     event.preventDefault();
-    addTodo(newTodoValue);
+    saveTodo(newTodoValue);
     setOpenModal(false);
   };
 
