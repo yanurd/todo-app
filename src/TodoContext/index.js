@@ -32,11 +32,11 @@ elements so they'd fit my code */
 
   const uncompletedTodos = todos.filter((todo) => !todo.completed).length;
 
-  const saveTodo = (event) => {
-    event.preventDefault();
+  const saveTodo = (text) => {
+
     const newTodos = [...todos];
     newTodos.push({
-      text: event.target.value,
+      text: text,
       confirmed: false,
     });
     setTodos(newTodos);
