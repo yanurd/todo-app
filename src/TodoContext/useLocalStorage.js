@@ -24,7 +24,7 @@ const useLocalStorage = (itemName, initialValue) => {
         setError(true);
       }
     }, 1500);
-  }, [initialValue]);
+  }, [initialValue, itemName]);
 
   const updateLocalStorage = (newTodo) => {
     try {
